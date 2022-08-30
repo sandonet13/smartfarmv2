@@ -21,7 +21,7 @@ function getChartColorsArray(chartId) {
     })
 }
 
-//  MINI CHART
+//  MINI CHART 1
 var url = 'http://localhost:8080/get_panen_day';
 var data_fix = [];
 $.ajax({
@@ -37,7 +37,7 @@ $.ajax({
 });
 var data = data_fix;
 // mini-1
-console.log(data_fix);
+// console.log(data_fix);
 var minichart1Colors = getChartColorsArray("#mini-chart1");
 var options = {
     series: [{
@@ -78,14 +78,27 @@ var options = {
 var chart = new ApexCharts(document.querySelector("#mini-chart1"), options);
 chart.render();
 
-
-
-
+//  MINI CHART 2
+var url = 'http://localhost:8080/get_panen_day_b';
+var data_fix = [];
+$.ajax({
+    url: url,
+    dataType: 'json',
+    async: false,
+    data: {
+        someparam: 'someval'
+    },
+    success: function(data) {
+        data_fix = data;
+    },
+});
+var data = data_fix;
 // mini-2
-var minichart2Colors = getChartColorsArray("#mini-chart2");
+// console.log(data_fix);
+var minichart1Colors = getChartColorsArray("#mini-chart2");
 var options = {
     series: [{
-        data: [15, 42, 47, 2, 14, 19, 65, 75, 47, 15, 42, 47, 2, 14, 12, ]
+        data: data
     }],
     chart: {
         type: 'line',
@@ -94,7 +107,7 @@ var options = {
             enabled: true
         }
     },
-    colors: minichart2Colors,
+    colors: minichart1Colors,
     stroke: {
         curve: 'smooth',
         width: 2,
@@ -121,6 +134,435 @@ var options = {
 
 var chart = new ApexCharts(document.querySelector("#mini-chart2"), options);
 chart.render();
+
+
+//  MINI CHART 2
+var url = '/get_pakan_pakai';
+var url2 = '/get_pakan_sisa';
+var url3 = '/get_pakan_masuk';
+var data_fix = [];
+var data_fix2 = [];
+var data_fix3 = [];
+$.ajax({
+    url: url,
+    dataType: 'json',
+    async: false,
+    data: {
+        someparam: 'someval'
+    },
+    success: function(data) {
+        data_fix = data;
+    },
+});
+$.ajax({
+    url: url2,
+    dataType: 'json',
+    async: false,
+    data: {
+        someparam: 'someval'
+    },
+    success: function(data2) {
+        data_fix2 = data2;
+    },
+});
+$.ajax({
+    url: url3,
+    dataType: 'json',
+    async: false,
+    data: {
+        someparam: 'someval'
+    },
+    success: function(data3) {
+        data_fix3 = data3;
+    },
+});
+var data = data_fix;
+var data2 = data_fix2;
+var data3 = data_fix3;
+// mini-2
+// console.log(data_fix);
+var minichart1Colors = getChartColorsArray("#column_chart");
+var options = {
+    series: [{
+        name: 'Pakan Masuk',
+        data: data3
+    },{
+        name: 'Pakan Sisa',
+        data: data2
+    },{
+        name: 'Pakan Terpakai',
+        data: data
+    }],
+    chart: {
+                width: '100%',
+                height: 350,
+                type: 'bar',
+                stacked: false,
+                toolbar: {
+                    show: true,
+                }
+            },
+    colors: minichart1Colors,
+    plotOptions: {
+        bar: {
+            horizontal: false,
+            columnWidth: '45%',
+        },
+    },
+    dataLabels: {
+        enabled: false
+    },
+    noData: {
+        text: "No Data to Display"
+    },
+    stroke: {
+        show: true,
+        width: 2,
+        colors: ['transparent']
+    },
+    tooltip: {
+        fixed: {
+            enabled: false
+        },
+        x: {
+            show: false
+        },
+        y: {
+            title: {
+                formatter: (seriesName) => seriesName,
+                text: 'bag'
+            },
+                    },
+        marker: {
+            show: false
+        }
+    }
+};
+
+var chart = new ApexCharts(document.querySelector("#column_chart"), options);
+chart.render();
+
+
+var url = '/get_pakan_pakai_2';
+var url2 = '/get_pakan_sisa_2';
+var url3 = '/get_pakan_masuk_2';
+var data_fix = [];
+var data_fix2 = [];
+var data_fix3 = [];
+$.ajax({
+    url: url,
+    dataType: 'json',
+    async: false,
+    data: {
+        someparam: 'someval'
+    },
+    success: function(data) {
+        data_fix = data;
+    },
+});
+$.ajax({
+    url: url2,
+    dataType: 'json',
+    async: false,
+    data: {
+        someparam: 'someval'
+    },
+    success: function(data2) {
+        data_fix2 = data2;
+    },
+});
+$.ajax({
+    url: url3,
+    dataType: 'json',
+    async: false,
+    data: {
+        someparam: 'someval'
+    },
+    success: function(data3) {
+        data_fix3 = data3;
+    },
+});
+var data = data_fix;
+var data2 = data_fix2;
+var data3 = data_fix3;
+// mini-2
+// console.log(data_fix);
+var minichart1Colors = getChartColorsArray("#column_chart_2");
+var options = {
+    series: [{
+        name: 'Pakan Masuk',
+        data: data3
+    },{
+        name: 'Pakan Sisa',
+        data: data2
+    },{
+        name: 'Pakan Terpakai',
+        data: data
+    }],
+    chart: {
+                width: '100%',
+                height: 350,
+                type: 'bar',
+                stacked: false,
+                toolbar: {
+                    show: true,
+                }
+            },
+    colors: minichart1Colors,
+    plotOptions: {
+        bar: {
+            horizontal: false,
+            columnWidth: '45%',
+        },
+    },
+    dataLabels: {
+        enabled: false
+    },
+    stroke: {
+        show: true,
+        width: 2,
+        colors: ['transparent']
+    },
+    noData: {
+        text: "No Data to Display"
+    },
+    tooltip: {
+        fixed: {
+            enabled: false
+        },
+        x: {
+            show: false
+        },
+        y: {
+            title: {
+                formatter: (seriesName) => seriesName,
+            },
+                    },
+        marker: {
+            show: false
+        }
+    }
+};
+
+var chart = new ApexCharts(document.querySelector("#column_chart_2"), options);
+chart.render();
+
+
+
+
+var url = '/get_pakan_pakai_b';
+var url2 = '/get_pakan_sisa_b';
+var url3 = '/get_pakan_masuk_b';
+var data_fix = [];
+var data_fix2 = [];
+var data_fix3 = [];
+$.ajax({
+    url: url,
+    dataType: 'json',
+    async: false,
+    data: {
+        someparam: 'someval'
+    },
+    success: function(data) {
+        data_fix = data;
+    },
+});
+$.ajax({
+    url: url2,
+    dataType: 'json',
+    async: false,
+    data: {
+        someparam: 'someval'
+    },
+    success: function(data2) {
+        data_fix2 = data2;
+    },
+});
+$.ajax({
+    url: url3,
+    dataType: 'json',
+    async: false,
+    data: {
+        someparam: 'someval'
+    },
+    success: function(data3) {
+        data_fix3 = data3;
+    },
+});
+var data = data_fix;
+var data2 = data_fix2;
+var data3 = data_fix3;
+// mini-2
+// console.log(data_fix);
+var minichart1Colors = getChartColorsArray("#column_chart_b");
+var options = {
+    series: [{
+        name: 'Pakan Masuk',
+        data: data3
+    },{
+        name: 'Pakan Sisa',
+        data: data2
+    },{
+        name: 'Pakan Terpakai',
+        data: data
+    }],
+    chart: {
+                width: '100%',
+                height: 350,
+                type: 'bar',
+                stacked: false,
+                toolbar: {
+                    show: true,
+                }
+            },
+    colors: minichart1Colors,
+    plotOptions: {
+        bar: {
+            horizontal: false,
+            columnWidth: '45%',
+        },
+    },
+    dataLabels: {
+        enabled: false
+    },
+    noData: {
+        text: "No Data to Display"
+    },
+    stroke: {
+        show: true,
+        width: 2,
+        colors: ['transparent']
+    },
+    tooltip: {
+        fixed: {
+            enabled: false
+        },
+        x: {
+            show: false
+        },
+        y: {
+            title: {
+                formatter: (seriesName) => seriesName,
+                text: 'bag'
+            },
+                    },
+        marker: {
+            show: false
+        }
+    }
+};
+
+var chart = new ApexCharts(document.querySelector("#column_chart_b"), options);
+chart.render();
+
+
+var url = '/get_pakan_pakai_b_2';
+var url2 = '/get_pakan_sisa_b_2';
+var url3 = '/get_pakan_masuk_b_2';
+var data_fix = [];
+var data_fix2 = [];
+var data_fix3 = [];
+$.ajax({
+    url: url,
+    dataType: 'json',
+    async: false,
+    data: {
+        someparam: 'someval'
+    },
+    success: function(data) {
+        data_fix = data;
+    },
+});
+$.ajax({
+    url: url2,
+    dataType: 'json',
+    async: false,
+    data: {
+        someparam: 'someval'
+    },
+    success: function(data2) {
+        data_fix2 = data2;
+    },
+});
+$.ajax({
+    url: url3,
+    dataType: 'json',
+    async: false,
+    data: {
+        someparam: 'someval'
+    },
+    success: function(data3) {
+        data_fix3 = data3;
+    },
+});
+var data = data_fix;
+var data2 = data_fix2;
+var data3 = data_fix3;
+// mini-2
+// console.log(data_fix);
+var minichart1Colors = getChartColorsArray("#column_chart_b_2");
+var options = {
+    series: [{
+        name: 'Pakan Masuk',
+        data: data3
+    },{
+        name: 'Pakan Sisa',
+        data: data2
+    },{
+        name: 'Pakan Terpakai',
+        data: data
+    }],
+    chart: {
+                width: '100%',
+                height: 350,
+                type: 'bar',
+                stacked: false,
+                toolbar: {
+                    show: true,
+                }
+            },
+    colors: minichart1Colors,
+    plotOptions: {
+        bar: {
+            horizontal: false,
+            columnWidth: '45%',
+        },
+    },
+    dataLabels: {
+        enabled: false
+    },
+    stroke: {
+        show: true,
+        width: 2,
+        colors: ['transparent']
+    },
+    noData: {
+        text: "No Data to Display"
+    },
+    tooltip: {
+        fixed: {
+            enabled: false
+        },
+        x: {
+            show: false
+        },
+        y: {
+            title: {
+                formatter: (seriesName) => seriesName,
+            },
+                    },
+        marker: {
+            show: false
+        }
+    }
+};
+
+var chart = new ApexCharts(document.querySelector("#column_chart_b_2"), options);
+chart.render();
+
+
+
+
 
 // mini-3
 var minichart3Colors = getChartColorsArray("#mini-chart3");

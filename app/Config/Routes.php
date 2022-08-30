@@ -69,6 +69,25 @@ $routes->add('table/kematian_b_lantai_1_update/(:segment)', 'TableHarianControll
 $routes->get('table/kematian_b_lantai_1_delete/(:segment)', 'TableHarianController::kematian_b_lantai_1_delete/$1');
 
 $routes->get('get_panen_day', 'Home::get_panen_day');
+$routes->get('get_panen_day_b', 'Home::get_panen_day_b');
+$routes->get('get_berat_total_a', 'Home::get_berat_total_a');
+$routes->get('get_berat_rata', 'Home::get_berat_rata');
+$routes->get('get_berat_total_b', 'Home::get_berat_total_b');
+$routes->get('get_berat_rata_b', 'Home::get_berat_rata_b');
+$routes->get('timbangan_harian_a_1', 'Home::timbangan_harian_a_1');
+$routes->get('get_pakan_pakai', 'Home::get_pakan_pakai');
+$routes->get('get_pakan_sisa', 'Home::get_pakan_sisa');
+$routes->get('get_pakan_masuk', 'Home::get_pakan_masuk');
+$routes->get('get_pakan_pakai_2', 'Home::get_pakan_pakai_2');
+$routes->get('get_pakan_sisa_2', 'Home::get_pakan_sisa_2');
+$routes->get('get_pakan_masuk_2', 'Home::get_pakan_masuk_2');
+
+$routes->get('get_pakan_pakai_b', 'Home::get_pakan_pakai_b');
+$routes->get('get_pakan_sisa_b', 'Home::get_pakan_sisa_b');
+$routes->get('get_pakan_masuk_b', 'Home::get_pakan_masuk_b');
+$routes->get('get_pakan_pakai_b_2', 'Home::get_pakan_pakai_b_2');
+$routes->get('get_pakan_sisa_b_2', 'Home::get_pakan_sisa_b_2');
+$routes->get('get_pakan_masuk_b_2', 'Home::get_pakan_masuk_b_2');
 
 
 //Multi-language functionality 

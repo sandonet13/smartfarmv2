@@ -103,9 +103,9 @@ class InputPanenController extends BaseController
             ]);
 
         } else {
-            $bw_ekor_array = ['tonase' => $this->request->getPost('tonase'),
-                              'ekor' => $this->request->getPost('ekor')];
-            $bw_ekor_data = $bw_ekor_array['tonase'] / $bw_ekor_array['ekor'];
+            $bw_ekor_array = ['tonase2' => $this->request->getPost('tonase2'),
+                              'ekor2' => $this->request->getPost('ekor2')];
+            $bw_ekor_data = $bw_ekor_array['tonase2'] / $bw_ekor_array['ekor2'];
         $this->panenmodelb->insert([
             'tanggal' => $this->request->getPost('tanggal2'),
             'umur' => $this->request->getPost('umur2'),

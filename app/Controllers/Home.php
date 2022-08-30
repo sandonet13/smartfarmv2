@@ -35,6 +35,15 @@ class Home extends BaseController
 			'panen_akhir_a' => $this->dashboardModel->get_panen_seminggu(),
 			'panen_hari_a' => $this->dashboardModel->get_panen_day(),
 			
+			'hasil_panen_b' => $this->dashboardModel->get_hasil_panen_b(),
+			'panen_akhir_b' => $this->dashboardModel->get_panen_seminggu_b(),
+			'panen_hari_b' => $this->dashboardModel->get_panen_day_b(),
+			'berat_total_a' => $this->dashboardModel->get_berat_total_a(),
+			'berat_total_b' => $this->dashboardModel->get_berat_total_b(),
+			'berat_rata' => $this->dashboardModel->get_berat_rata(),
+			'berat_rata_b' => $this->dashboardModel->get_berat_rata_b(),
+			'timbangan_harian_a_1' => $this->dashboardModel->timbangan_harian_a_1(),
+			
 		];
 		
 		return view('index', $data);
@@ -49,6 +58,187 @@ class Home extends BaseController
 			
 	
 	}
+
+	public function get_panen_day_b()
+	{	
+		
+
+		echo $this->dashboardModel->get_panen_day_b();
+		  
+			
+	
+	}
+
+	public function get_berat_total_a()
+	{	
+		
+
+		echo $this->dashboardModel->get_berat_total_a();
+		  
+			
+	
+	}
+
+	public function get_berat_total_b()
+	{	
+		
+
+		echo $this->dashboardModel->get_berat_total_b();
+		  
+			
+	
+	}
+
+	public function get_berat_rata()
+	{	
+		
+
+		echo $this->dashboardModel->get_berat_rata();
+		  
+			
+	
+	}
+
+	public function get_berat_rata_b()
+	{	
+		
+
+		echo $this->dashboardModel->get_berat_rata_b();
+		  
+			
+	
+	}
+
+	public function timbangan_harian_a_1()
+	{	
+		
+
+		echo json_encode($this->dashboardModel->timbangan_harian_a_1());
+		  
+			
+	
+	}
+
+	public function get_pakan_pakai()
+	{	
+		
+
+		echo $this->dashboardModel->get_pakan_pakai();
+		  
+			
+	
+	}
+
+	public function get_pakan_sisa()
+	{	
+		
+
+		echo $this->dashboardModel->get_pakan_sisa();
+		  
+			
+	
+	}
+
+	public function get_pakan_masuk()
+	{	
+		
+
+		echo $this->dashboardModel->get_pakan_masuk();
+		  
+			
+	
+	}
+
+	public function get_pakan_pakai_2()
+	{	
+		
+
+		echo $this->dashboardModel->get_pakan_pakai_2();
+		  
+			
+	
+	}
+
+	public function get_pakan_sisa_2()
+	{	
+		
+
+		echo $this->dashboardModel->get_pakan_sisa_2();
+		  
+			
+	
+	}
+
+	public function get_pakan_masuk_2()
+	{	
+		
+
+		echo $this->dashboardModel->get_pakan_masuk_2();
+		  
+			
+	
+	}
+
+	public function get_pakan_pakai_b()
+	{	
+		
+
+		echo $this->dashboardModel->get_pakan_pakai_b();
+		  
+			
+	
+	}
+
+	public function get_pakan_sisa_b()
+	{	
+		
+
+		echo $this->dashboardModel->get_pakan_sisa_b();
+		  
+			
+	
+	}
+
+	public function get_pakan_masuk_b()
+	{	
+		
+
+		echo $this->dashboardModel->get_pakan_masuk_b();
+		  
+			
+	
+	}
+
+	public function get_pakan_pakai_b_2()
+	{	
+		
+
+		echo $this->dashboardModel->get_pakan_pakai_b_2();
+		  
+			
+	
+	}
+
+	public function get_pakan_sisa_b_2()
+	{	
+		
+
+		echo $this->dashboardModel->get_pakan_sisa_b_2();
+		  
+			
+	
+	}
+
+	public function get_pakan_masuk_b_2()
+	{	
+		
+
+		echo $this->dashboardModel->get_pakan_masuk_b_2();
+		  
+			
+	
+	}
+
 
 	public function show_index_dark()
 	{

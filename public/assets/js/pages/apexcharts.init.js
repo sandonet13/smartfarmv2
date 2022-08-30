@@ -270,13 +270,13 @@ var options = {
         colors: ['transparent']
     },
     series: [{
-        name: 'Net Profit',
+        name: 'Pakan Terpakai',
         data: [46, 57, 59, 54, 62, 58, 64, 60, 66]
     }, {
-        name: 'Revenue',
+        name: 'Pakan Stock',
         data: [74, 83, 102, 97, 86, 106, 93, 114, 94]
     }, {
-        name: 'Free Cash Flow',
+        name: 'Pakan Total',
         data: [37, 42, 38, 26, 47, 50, 54, 55, 43]
     }],
     colors: columnColors,
