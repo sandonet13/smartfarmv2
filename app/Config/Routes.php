@@ -75,6 +75,9 @@ $routes->get('get_berat_rata', 'Home::get_berat_rata');
 $routes->get('get_berat_total_b', 'Home::get_berat_total_b');
 $routes->get('get_berat_rata_b', 'Home::get_berat_rata_b');
 $routes->get('timbangan_harian_a_1', 'Home::timbangan_harian_a_1');
+$routes->get('timbangan_harian_a_2', 'Home::timbangan_harian_a_2');
+$routes->get('timbangan_harian_b_1', 'Home::timbangan_harian_b_1');
+$routes->get('timbangan_harian_b_2', 'Home::timbangan_harian_b_2');
 $routes->get('get_pakan_pakai', 'Home::get_pakan_pakai');
 $routes->get('get_pakan_sisa', 'Home::get_pakan_sisa');
 $routes->get('get_pakan_masuk', 'Home::get_pakan_masuk');
@@ -88,6 +91,10 @@ $routes->get('get_pakan_masuk_b', 'Home::get_pakan_masuk_b');
 $routes->get('get_pakan_pakai_b_2', 'Home::get_pakan_pakai_b_2');
 $routes->get('get_pakan_sisa_b_2', 'Home::get_pakan_sisa_b_2');
 $routes->get('get_pakan_masuk_b_2', 'Home::get_pakan_masuk_b_2');
+$routes->get('kematian_a_1', 'Home::kematian_a_1');
+$routes->get('kematian_a_2', 'Home::kematian_a_2');
+$routes->get('kematian_b_1', 'Home::kematian_b_1');
+$routes->get('kematian_b_2', 'Home::kematian_b_2');
 
 
 //Multi-language functionality 

@@ -43,6 +43,13 @@ class Home extends BaseController
 			'berat_rata' => $this->dashboardModel->get_berat_rata(),
 			'berat_rata_b' => $this->dashboardModel->get_berat_rata_b(),
 			'timbangan_harian_a_1' => $this->dashboardModel->timbangan_harian_a_1(),
+			'timbangan_harian_a_2' => $this->dashboardModel->timbangan_harian_a_2(),
+			'timbangan_harian_b_1' => $this->dashboardModel->timbangan_harian_b_1(),
+			'timbangan_harian_b_2' => $this->dashboardModel->timbangan_harian_b_2(),
+			'kematian_a_1' => $this->dashboardModel->kematian_a_1(),
+			'kematian_a_2' => $this->dashboardModel->kematian_a_2(),
+			'kematian_b_1' => $this->dashboardModel->kematian_b_1(),
+			'kematian_b_2' => $this->dashboardModel->kematian_b_2(),
 			
 		];
 		
@@ -118,6 +125,8 @@ class Home extends BaseController
 			
 	
 	}
+
+	
 
 	public function get_pakan_pakai()
 	{	

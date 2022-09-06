@@ -122,14 +122,6 @@
                                                         <label for="example-number-input" class="form-label">Sekat 3</label>
                                                         <input class="form-control" type="number" value="" id="example-time-input" name="sekat_3">
                                                     </div>
-                                                    <div class="mb-3">
-                                                        <label for="example-datetime-local-input" class="form-label">Sekat 4</label>
-                                                        <input class="form-control" type="number" value="" id="example-time-input" name="sekat_4">
-                                                    </div>
-                                                    <!-- <div class="mb-3">
-                                                        <label for="example-datetime-local-input" class="form-label">Sekat 5</label>
-                                                        <input class="form-control" type="number" value="" id="example-time-input" name="sekat_5">
-                                                    </div> -->
                                             
                                             
                                                 </div>
@@ -137,6 +129,14 @@
 
                                                 <div class="col-lg-6">
                                                     <div class="mt-3 mt-lg-0">
+                                                    <div class="mb-3">
+                                                        <label for="example-datetime-local-input" class="form-label">Sekat 4</label>
+                                                        <input class="form-control" type="number" value="" id="example-time-input" name="sekat_4">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="example-datetime-local-input" class="form-label">Sekat 5</label>
+                                                        <input class="form-control" type="number" value="" id="example-time-input" name="sekat_5">
+                                                    </div>
                                                         <!-- <div class="mb-3">
                                                             <label for="example-date-input" class="form-label">BW</label>
                                                             <input class="form-control" type="number" value="" id="example-date-input" name="bw" required>
@@ -218,14 +218,7 @@
                                                 <label for="example-number-input" class="form-label">Sekat 3</label>
                                                 <input class="form-control" type="number" value="" id="example-time-input" name="sekat_3">
                                             </div>
-                                            <div class="mb-3">
-                                                <label for="example-datetime-local-input" class="form-label">Sekat 4</label>
-                                                <input class="form-control" type="number" value="" id="example-time-input" name="sekat_4">
-                                            </div>
-                                            <!-- <div class="mb-3">
-                                                <label for="example-datetime-local-input" class="form-label">Sekat 5</label>
-                                                <input class="form-control" type="number" value="" id="example-time-input" name="sekat_5">
-                                            </div> -->
+                                            
                                             
                                             
                                             </div>
@@ -233,6 +226,14 @@
 
                                         <div class="col-lg-6">
                                             <div class="mt-3 mt-lg-0">
+                                            <div class="mb-3">
+                                                <label for="example-datetime-local-input" class="form-label">Sekat 4</label>
+                                                <input class="form-control" type="number" value="" id="example-time-input" name="sekat_4">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="example-datetime-local-input" class="form-label">Sekat 5</label>
+                                                <input class="form-control" type="number" value="" id="example-time-input" name="sekat_5">
+                                            </div>
                                                 <!-- <div class="mb-3">
                                                     <label for="example-date-input" class="form-label">BW</label>
                                                     <input class="form-control" type="number" value="" id="example-date-input" name="bw" required>
@@ -302,6 +303,14 @@
                                                 <label for="example-number-input" class="form-label">Sekat 3</label>
                                                 <input class="form-control" type="number" value="" id="example-time-input" name="sekat_3">
                                             </div>
+                                            
+                                            
+                                            
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <div class="mt-3 mt-lg-0">
                                             <div class="mb-3">
                                                 <label for="example-datetime-local-input" class="form-label">Sekat 4</label>
                                                 <input class="form-control" type="number" value="" id="example-time-input" name="sekat_4">
@@ -310,13 +319,6 @@
                                                 <label for="example-datetime-local-input" class="form-label">Sekat 5</label>
                                                 <input class="form-control" type="number" value="" id="example-time-input" name="sekat_5">
                                             </div>
-                                            
-                                            
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-6">
-                                            <div class="mt-3 mt-lg-0">
                                                <div class="mb-3">
                                                     <label class="form-label">Lantai</label>
                                                     <select class="form-select" name="lantai" required>
@@ -363,6 +365,14 @@
                                                 <label for="example-number-input" class="form-label">Sekat 3</label>
                                                 <input class="form-control" type="number" value="" id="example-time-input" name="sekat_3">
                                             </div>
+                                            
+                                            
+                                            
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <div class="mt-3 mt-lg-0">
                                             <div class="mb-3">
                                                 <label for="example-datetime-local-input" class="form-label">Sekat 4</label>
                                                 <input class="form-control" type="number" value="" id="example-time-input" name="sekat_4">
@@ -371,13 +381,6 @@
                                                 <label for="example-datetime-local-input" class="form-label">Sekat 5</label>
                                                 <input class="form-control" type="number" value="" id="example-time-input" name="sekat_5">
                                             </div>
-                                            
-                                            
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-6">
-                                            <div class="mt-3 mt-lg-0">
                                                <div class="mb-3">
                                                     <label class="form-label">Lantai</label>
                                                     <select class="form-select" name="lantai" required>

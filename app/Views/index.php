@@ -46,7 +46,7 @@
                                 </div>
                                 
                                 <div class="text-nowrap">
-                                    <span class="badge bg-soft-success text-success"><?php echo $berat_total_a?></span>&nbsp;Kg
+                                    <span class="badge bg-soft-success text-success"><?php echo $berat_total_a?>0&nbsp;</span>&nbsp;Kg
                                     <span class="ms-1 text-muted font-size-13">Berat Total</span>
                                 </div>
                                 <div class="text-nowrap">
@@ -54,7 +54,7 @@
                                     <span class="ms-1 text-muted font-size-13">Berat Rata - Rata</span>
                                 </div>
                                 <div class="text-nowrap">
-                                    <span class="badge bg-soft-success text-success"><?php echo $panen_akhir_a?></span>
+                                    <span class="badge bg-soft-success text-success"><?php echo $panen_akhir_a?>0&nbsp;</span>
                                     <span class="ms-1 text-muted font-size-13">Ekor Seminggu Terakhir</span>
                                 </div>
                                 <!-- </div> -->
@@ -81,7 +81,7 @@
                                 </div>
                                
                                 <div class="text-nowrap">
-                                    <span class="badge bg-soft-success text-success"><?php echo $berat_total_b?></span>&nbsp;Kg
+                                    <span class="badge bg-soft-success text-success"><?php echo $berat_total_b?>0&nbsp;</span>&nbsp;Kg
                                     <span class="ms-1 text-muted font-size-13">Berat Total</span>
                                 </div>
                                 <div class="text-nowrap">
@@ -89,78 +89,180 @@
                                     <span class="ms-1 text-muted font-size-13">Berat Rata - Rata</span>
                                 </div>
                                 <div class="text-nowrap">
-                                    <span class="badge bg-soft-success text-success"><?php echo $panen_akhir_b?></span>
+                                    <span class="badge bg-soft-success text-success"><?php echo $panen_akhir_b?>0&nbsp;</span>
                                     <span class="ms-1 text-muted font-size-13">Ekor Seminggu Terakhir</span>
                                 </div>
                             </div><!-- end card body -->
                         </div><!-- end card -->
                     </div><!-- end col -->
                 </div><!-- end row-->
-                <!-- <div class="row">
-                    <div class="col-xl-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title">Data actual BW, Mortality dan sisa ayam </h4>
-                            </div>
+                <div class="row">
+                    <div class="col-xl-6">
+                        <!-- card -->
+                        <div class="card card-h-100">
+                            <!-- card body -->
                             <div class="card-body">
-                                <div class="table-responsive table-bordered">
-                                    <table class="table mb-0">
+                                <div class="col-6">
+                                        <span class="text-muted mb-3 lh-1 d-block text-truncate">BW (Gram)</span>
 
+                            </div>
+                            <div class="table-responsive">
+                                    <table class="table mb-0">
                                         <thead>
-                                            <tr>
-                                                <th style="vertical-align : middle;text-align:center;" colspan="2" rowspan="2">Kandang A</th>
-                                                <th style="vertical-align : middle;text-align:center;" rowspan="2">Umur</th>
-                                                <th style="vertical-align : middle;text-align:center;" colspan="6">BW (gram)</th>
-                                                <th style="vertical-align : middle;text-align:center;" rowspan="2">Pakan (bag)</th>
-                                                <th style="vertical-align : middle;text-align:center;" rowspan="2">Stock (bag)</th>
-                                                <th style="vertical-align : middle;text-align:center;" rowspan="2">Total (bag)</th>
+                                        <tr>
+                                            <th></th>
+                                            <th style="vertical-align : middle;text-align:center;" colspan="2">Kandang A</th>
+                                            <th style="vertical-align : middle;text-align:center;" colspan="2">Kandang B</th>
+                                        </tr>
+                                        <tr>
+                                                <th></th>
+                                                <th>Lantai 1</th>
+                                                <th>Lantai 2</th>
+                                                <th>Lantai 1</th>
+                                                <th>Lantai 2</th>
                                             </tr>
                                             <tr>
-                                                <th>Sekat 1</th>
-                                                <th>Sekat 2</th>
-                                                <th>Sekat 3</th>
-                                                <th>Sekat 4</th>
-                                                <th>Sekat 5</th>
-                                                <th>Rata - Rata</th>
+                                                <th>Umur</th>
+                                                <td><?php echo $timbangan_harian_a_1[6]?></td>
+                                                <td><?php echo $timbangan_harian_a_2[6]?></td>
+                                                <td><?php echo $timbangan_harian_b_1[6]?></td>
+                                                <td><?php echo $timbangan_harian_b_2[6]?></td>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                                <td style="vertical-align : middle;text-align:left;" rowspan="2">Lantai</td>
-                                                <td>1</td>
-                                                <td style="vertical-align : middle;text-align:center;" rowspan="2"><?php echo $timbangan_harian_a_1[6][0]['umur']?></td>
-                                                <td><?php echo $timbangan_harian_a_1[0][0]['sekat_1']?></td>
-                                                <td><?php echo $timbangan_harian_a_1[1][0]['sekat_2']?></td>
-                                                <td><?php echo $timbangan_harian_a_1[2][0]['sekat_3']?></td>
-                                                <td><?php echo $timbangan_harian_a_1[3][0]['sekat_4']?></td>
-                                                <td><?php echo $timbangan_harian_a_1[4][0]['sekat_5']?></td>
-                                                <td><?php echo $timbangan_harian_a_1[5][0]['avg_sekat']?></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                            <tr>
+                                                <th>Sekat 1</th>
+                                                <td><?php echo $timbangan_harian_a_1[0]?></td>
+                                                <td><?php echo $timbangan_harian_a_2[0]?></td>
+                                                <td><?php echo $timbangan_harian_b_1[0]?></td>
+                                                <td><?php echo $timbangan_harian_b_2[0]?></td>
                                             </tr>
                                             <tr>
-                                                <td>2</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                                <th>Sekat 2</th>
+                                                <td><?php echo $timbangan_harian_a_1[1]?></td>
+                                                <td><?php echo $timbangan_harian_a_2[1]?></td>
+                                                <td><?php echo $timbangan_harian_b_1[1]?></td>
+                                                <td><?php echo $timbangan_harian_b_2[1]?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Sekat 3</th>
+                                                <td><?php echo $timbangan_harian_a_1[2]?></td>
+                                                <td><?php echo $timbangan_harian_a_2[2]?></td>
+                                                <td><?php echo $timbangan_harian_b_1[2]?></td>
+                                                <td><?php echo $timbangan_harian_b_2[2]?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Sekat 4</th>
+                                                <td><?php echo $timbangan_harian_a_1[3]?></td>
+                                                <td><?php echo $timbangan_harian_a_2[3]?></td>
+                                                <td><?php echo $timbangan_harian_b_1[3]?></td>
+                                                <td><?php echo $timbangan_harian_b_2[3]?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Sekat 5</th>
+                                                <td><?php echo $timbangan_harian_a_1[4]?></td>
+                                                <td><?php echo $timbangan_harian_a_2[4]?></td>
+                                                <td><?php echo $timbangan_harian_b_1[4]?></td>
+                                                <td><?php echo $timbangan_harian_b_2[4]?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Average</th>
+                                                <td><?php echo $timbangan_harian_a_1[5]?></td>
+                                                <td><?php echo $timbangan_harian_a_2[5]?></td>
+                                                <td><?php echo $timbangan_harian_b_1[5]?></td>
+                                                <td><?php echo $timbangan_harian_b_2[5]?></td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
+                            </div><!-- end card body -->
+                        </div><!-- end card -->
+                    </div><!-- end col -->
+                    <div class="col-xl-6">
+                    <div class="card card-h-100">
+                            <!-- card body -->
+                            <div class="card-body">
+                                <div class="col-6">
+                                        <span class="text-muted mb-3 lh-1 d-block text-truncate">Kematian (Ekor)</span>
+
                             </div>
-                            
-                        </div>
-                        
-                    </div>
-                    
-                </div> -->
+                            <div class="table-responsive">
+                                    <table class="table mb-0">
+                                        <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th style="vertical-align : middle;text-align:center;" colspan="2">Kandang A</th>
+                                            <th style="vertical-align : middle;text-align:center;" colspan="2">Kandang B</th>
+                                        </tr>
+                                        <tr>
+                                                <th></th>
+                                                <th>Lantai 1</th>
+                                                <th>Lantai 2</th>
+                                                <th>Lantai 1</th>
+                                                <th>Lantai 2</th>
+                                            </tr>
+                                            <tr>
+                                                <th>Umur</th>
+                                                <td><?php echo $kematian_a_1[6]?></td>
+                                                <td><?php echo $kematian_a_2[6]?></td>
+                                                <td><?php echo $kematian_b_1[6]?></td>
+                                                <td><?php echo $kematian_b_2[6]?></td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th>Sekat 1</th>
+                                                <td><?php echo $kematian_a_1[0]?></td>
+                                                <td><?php echo $kematian_a_2[0]?></td>
+                                                <td><?php echo $kematian_b_1[0]?></td>
+                                                <td><?php echo $kematian_b_2[0]?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Sekat 2</th>
+                                                <td><?php echo $kematian_a_1[1]?></td>
+                                                <td><?php echo $kematian_a_2[1]?></td>
+                                                <td><?php echo $kematian_b_1[1]?></td>
+                                                <td><?php echo $kematian_b_2[1]?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Sekat 3</th>
+                                                <td><?php echo $kematian_a_1[2]?></td>
+                                                <td><?php echo $kematian_a_2[2]?></td>
+                                                <td><?php echo $kematian_b_1[2]?></td>
+                                                <td><?php echo $kematian_b_2[2]?></td>
+ 
+                                            </tr>
+                                            <tr>
+                                                <th>Sekat 4</th>
+                                                <td><?php echo $kematian_a_1[3]?></td>
+                                                <td><?php echo $kematian_a_2[3]?></td>
+                                                <td><?php echo $kematian_b_1[3]?></td>
+                                                <td><?php echo $kematian_b_2[3]?></td>
+
+                                            </tr>
+                                            <tr>
+                                                <th>Sekat 5</th>
+                                                <td><?php echo $kematian_a_1[4]?></td>
+                                                <td><?php echo $kematian_a_2[4]?></td>
+                                                <td><?php echo $kematian_b_1[4]?></td>
+                                                <td><?php echo $kematian_b_2[4]?></td>
+
+                                            </tr>
+                                            <tr>
+                                                <th>Total</th>
+                                                <td><?php echo $kematian_a_1[5]?></td>
+                                                <td><?php echo $kematian_a_2[5]?></td>
+                                                <td><?php echo $kematian_b_1[5]?></td>
+                                                <td><?php echo $kematian_b_2[5]?></td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div><!-- end card body -->
+                        </div><!-- end card -->
+                </div><!-- end row-->
+
                 <div class="row">
                     <div class="col-xl-6">
                         <div class="card">
@@ -220,6 +322,7 @@
                     </div>
                 </div>
                 <!-- end row -->
+                
             </div>
             <!-- container-fluid -->
         </div>

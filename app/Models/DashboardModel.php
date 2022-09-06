@@ -19,29 +19,39 @@ class DashboardModel extends Model {
        $query = $this->db->table('panen_a');
        $query = $this->db->query('select ekor from panen_a');
        $data_array = $query->getResultArray();
-       foreach($data_array as $data) {
-        $data_decode[] = json_decode(json_encode($data),true);
-    }
-    $total_panen = 0;
-    foreach($data_decode as $key => $val) {
-        $total_panen += $val['ekor'];
-    }
-        return $total_panen;
+       if (empty($data_array)){
+        "Data Empty";
+       }else{
+
+            foreach($data_array as $data) {
+                $data_decode[] = json_decode(json_encode($data),true);
+            }
+            $total_panen = 0;
+            foreach($data_decode as $key => $val) {
+                $total_panen += $val['ekor'];
+            }
+                return $total_panen;
+        }   
     }
 
     public function get_hasil_panen_b() {
         $query = $this->db->table('panen_b');
         $query = $this->db->query('select ekor from panen_b');
         $data_array = $query->getResultArray();
-        foreach($data_array as $data) {
-         $data_decode[] = json_decode(json_encode($data),true);
-     }
-     $total_panen = 0;
-     foreach($data_decode as $key => $val) {
-         $total_panen += $val['ekor'];
-     }
-         return $total_panen;
-     }
+        if (empty($data_array)){
+            "Data Empty";
+           }else{
+                foreach($data_array as $data) {
+                $data_decode[] = json_decode(json_encode($data),true);
+            }
+            $total_panen = 0;
+            foreach($data_decode as $key => $val) {
+                $total_panen += $val['ekor'];
+            }
+                return $total_panen;
+            }
+        }
+
 
     public function get_panen_seminggu() {
         $query = $this->db->table('panen_a');
@@ -154,6 +164,9 @@ class DashboardModel extends Model {
         $query_ekor = $this->db->table('panen_a');
         $query_ekor = $this->db->query('select ekor from panen_a');
         $data_array = $query_ekor->getResultArray();
+        if (empty($data_array)){
+            "Data Empty";
+           }else{
         foreach($data_array as $data) {
             $data_decode[] = json_decode(json_encode($data),true);
         }
@@ -164,6 +177,7 @@ class DashboardModel extends Model {
 
     
         return $data_array_berat[0]['tonase'] / $total_panen;
+           }
     
      }
 
@@ -174,6 +188,9 @@ class DashboardModel extends Model {
         $query_ekor = $this->db->table('panen_b');
         $query_ekor = $this->db->query('select ekor from panen_b');
         $data_array = $query_ekor->getResultArray();
+        if (empty($data_array)){
+            "Data Empty";
+           }else{
         foreach($data_array as $data) {
             $data_decode[] = json_decode(json_encode($data),true);
         }
@@ -184,33 +201,498 @@ class DashboardModel extends Model {
 
     
         return $data_array_berat[0]['tonase'] / $total_panen;
-    
+        }
      }
      
 
      public function timbangan_harian_a_1() {
         $query = $this->db->table('timbangan_harian_a');
-        $query_umur = $this->db->query('select MAX(umur) as umur FROM timbangan_harian_a');
-        $query_sekat_1 = $this->db->query('select sekat_1 as sekat_1 FROM timbangan_harian_a where umur=(select MAX(umur) and lantai=1 from timbangan_harian_a)');
-        $query_sekat_2 = $this->db->query('select sekat_2 as sekat_2 FROM timbangan_harian_a where umur=(select MAX(umur) and lantai=1 from timbangan_harian_a)');
-        $query_sekat_3 = $this->db->query('select sekat_3 as sekat_3 FROM timbangan_harian_a where umur=(select MAX(umur) and lantai=1 from timbangan_harian_a)');
-        $query_sekat_4 = $this->db->query('select sekat_4 as sekat_4 FROM timbangan_harian_a where umur=(select MAX(umur) and lantai=1 from timbangan_harian_a)');
-        $query_sekat_5 = $this->db->query('select sekat_5 as sekat_5 FROM timbangan_harian_a where umur=(select MAX(umur) and lantai=1 from timbangan_harian_a)');
-        $query_avg = $this->db->query('select (sekat_1 + sekat_2 + sekat_3 + sekat_4 + sekat_5) / 5 as avg_sekat FROM timbangan_harian_a where umur=(select MAX(umur) and lantai=1 from timbangan_harian_a)');
+        $query_umur = $this->db->query('select MAX(umur) as umur FROM timbangan_harian_a where lantai=1');
+        $query_sekat_1 = $this->db->query('select sekat_1 FROM timbangan_harian_a where umur=(select MAX(umur) from timbangan_harian_a where lantai=1)');
+        $query_sekat_2 = $this->db->query('select sekat_2 FROM timbangan_harian_a where umur=(select MAX(umur) from timbangan_harian_a where lantai=1)');
+        $query_sekat_3 = $this->db->query('select sekat_3 FROM timbangan_harian_a where umur=(select MAX(umur) from timbangan_harian_a where lantai=1)');
+        $query_sekat_4 = $this->db->query('select sekat_4 FROM timbangan_harian_a where umur=(select MAX(umur) from timbangan_harian_a where lantai=1)');
+        $query_sekat_5 = $this->db->query('select sekat_5 FROM timbangan_harian_a where umur=(select MAX(umur) from timbangan_harian_a where lantai=1)');
+        $query_avg = $this->db->query('select (sekat_1 + sekat_2 + sekat_3 + sekat_4 + sekat_5) / 5 as avg_sekat FROM timbangan_harian_a where umur=(select MAX(umur) from timbangan_harian_a where lantai=1)');
+
+
+        if(empty($query_sekat_1->getResultArray())){
+            $query_sekat_1 = json_decode('[{"sekat_1":"0"}]', true);
+        }else{
+            $query_sekat_1 = $query_sekat_1->getResultArray();
+        }
+        if(empty($query_sekat_2->getResultArray())){
+            $query_sekat_2 = json_decode('[{"sekat_2":"0"}]', true);
+        }else{
+            $query_sekat_2 = $query_sekat_2->getResultArray();
+        }
+        if(empty($query_sekat_3->getResultArray())){
+            $query_sekat_3 = json_decode('[{"sekat_3":"0"}]', true);
+        }else{
+            $query_sekat_3 = $query_sekat_3->getResultArray();
+        }
+        if(empty($query_sekat_4->getResultArray())){
+            $query_sekat_4 = json_decode('[{"sekat_4":"0"}]', true);
+        }else{
+            $query_sekat_4 = $query_sekat_4->getResultArray();
+        }
+        if(empty($query_sekat_5->getResultArray())){
+            $query_sekat_5 = json_decode('[{"sekat_5":"0"}]', true);
+        }else{
+            $query_sekat_5 = $query_sekat_5->getResultArray();
+        }
+        if(empty($query_avg->getResultArray())){
+            $query_avg = json_decode('[{"avg_sekat":"0"}]', true);
+        }else{
+            $query_avg = $query_avg->getResultArray();
+        }
+        if(empty($query_umur->getResultArray())){
+            $query_umur = json_decode('[{"umur":"0"}]', true);
+        }else{
+            $query_umur = $query_umur->getResultArray();
+        }
 
         $data = [
-
-			$query_sekat_1->getResultArray(),
-			$query_sekat_2->getResultArray(),
-			$query_sekat_3->getResultArray(),
-			$query_sekat_4->getResultArray(),
-			$query_sekat_5->getResultArray(),
-			$query_avg->getResultArray(),
-            $query_umur->getResultArray(),
-
-			
+            floatval($query_sekat_1[0]['sekat_1']),
+			floatval($query_sekat_2[0]['sekat_2']),
+			floatval($query_sekat_3[0]['sekat_3']),
+			floatval($query_sekat_4[0]['sekat_4']),
+			floatval($query_sekat_5[0]['sekat_5']),
+			floatval($query_avg[0]['avg_sekat']),
+			floatval($query_umur[0]['umur']),
 		];
 		
+
+        return $data;
+
+        }
+
+
+        public function timbangan_harian_a_2() {
+            $query = $this->db->table('timbangan_harian_a');
+            $query_umur = $this->db->query('select MAX(umur) as umur FROM timbangan_harian_a where lantai=2');
+            $query_sekat_1 = $this->db->query('select sekat_1 FROM timbangan_harian_a where umur=(select MAX(umur) from timbangan_harian_a where lantai=2)');
+            $query_sekat_2 = $this->db->query('select sekat_2 FROM timbangan_harian_a where umur=(select MAX(umur) from timbangan_harian_a where lantai=2)');
+            $query_sekat_3 = $this->db->query('select sekat_3 FROM timbangan_harian_a where umur=(select MAX(umur) from timbangan_harian_a where lantai=2)');
+            $query_sekat_4 = $this->db->query('select sekat_4 FROM timbangan_harian_a where umur=(select MAX(umur) from timbangan_harian_a where lantai=2)');
+            $query_sekat_5 = $this->db->query('select sekat_5 FROM timbangan_harian_a where umur=(select MAX(umur) from timbangan_harian_a where lantai=2)');
+            $query_avg = $this->db->query('select (sekat_1 + sekat_2 + sekat_3 + sekat_4 + sekat_5) / 5 as avg_sekat FROM timbangan_harian_a where umur=(select MAX(umur) from timbangan_harian_a where lantai=2)');
+    
+            if(empty($query_sekat_1->getResultArray())){
+                $query_sekat_1 = json_decode('[{"sekat_1":"0"}]', true);
+            }else{
+                $query_sekat_1 = $query_sekat_1->getResultArray();
+            }
+            if(empty($query_sekat_2->getResultArray())){
+                $query_sekat_2 = json_decode('[{"sekat_2":"0"}]', true);
+            }else{
+                $query_sekat_2 = $query_sekat_2->getResultArray();
+            }
+            if(empty($query_sekat_3->getResultArray())){
+                $query_sekat_3 = json_decode('[{"sekat_3":"0"}]', true);
+            }else{
+                $query_sekat_3 = $query_sekat_3->getResultArray();
+            }
+            if(empty($query_sekat_4->getResultArray())){
+                $query_sekat_4 = json_decode('[{"sekat_4":"0"}]', true);
+            }else{
+                $query_sekat_4 = $query_sekat_4->getResultArray();
+            }
+            if(empty($query_sekat_5->getResultArray())){
+                $query_sekat_5 = json_decode('[{"sekat_5":"0"}]', true);
+            }else{
+                $query_sekat_5 = $query_sekat_5->getResultArray();
+            }
+            if(empty($query_avg->getResultArray())){
+                $query_avg = json_decode('[{"avg_sekat":"0"}]', true);
+            }else{
+                $query_avg = $query_avg->getResultArray();
+            }
+            if(empty($query_umur->getResultArray())){
+                $query_umur = json_decode('[{"umur":"0"}]', true);
+            }else{
+                $query_umur = $query_umur->getResultArray();
+            }
+    
+            $data = [
+                floatval($query_sekat_1[0]['sekat_1']),
+                floatval($query_sekat_2[0]['sekat_2']),
+                floatval($query_sekat_3[0]['sekat_3']),
+                floatval($query_sekat_4[0]['sekat_4']),
+                floatval($query_sekat_5[0]['sekat_5']),
+                floatval($query_avg[0]['avg_sekat']),
+                floatval($query_umur[0]['umur']),
+            ];
+            
+    
+            return $data;
+    
+            }
+
+            public function timbangan_harian_b_1() {
+                $query = $this->db->table('timbangan_harian_b');
+                $query_umur = $this->db->query('select MAX(umur) as umur FROM timbangan_harian_b where lantai=1');
+                $query_sekat_1 = $this->db->query('select sekat_1 FROM timbangan_harian_b where umur=(select MAX(umur) from timbangan_harian_b where lantai=1)');
+                $query_sekat_2 = $this->db->query('select sekat_2 FROM timbangan_harian_b where umur=(select MAX(umur) from timbangan_harian_b where lantai=1)');
+                $query_sekat_3 = $this->db->query('select sekat_3 FROM timbangan_harian_b where umur=(select MAX(umur) from timbangan_harian_b where lantai=1)');
+                $query_sekat_4 = $this->db->query('select sekat_4 FROM timbangan_harian_b where umur=(select MAX(umur) from timbangan_harian_b where lantai=1)');
+                $query_sekat_5 = $this->db->query('select sekat_5 FROM timbangan_harian_b where umur=(select MAX(umur) from timbangan_harian_b where lantai=1)');
+                $query_avg = $this->db->query('select (sekat_1 + sekat_2 + sekat_3 + sekat_4 + sekat_5) / 5 as avg_sekat FROM timbangan_harian_b where umur=(select MAX(umur) from timbangan_harian_b where lantai=1)');
+        
+                if(empty($query_sekat_1->getResultArray())){
+                    $query_sekat_1 = json_decode('[{"sekat_1":"0"}]', true);
+                }else{
+                    $query_sekat_1 = $query_sekat_1->getResultArray();
+                }
+                if(empty($query_sekat_2->getResultArray())){
+                    $query_sekat_2 = json_decode('[{"sekat_2":"0"}]', true);
+                }else{
+                    $query_sekat_2 = $query_sekat_2->getResultArray();
+                }
+                if(empty($query_sekat_3->getResultArray())){
+                    $query_sekat_3 = json_decode('[{"sekat_3":"0"}]', true);
+                }else{
+                    $query_sekat_3 = $query_sekat_3->getResultArray();
+                }
+                if(empty($query_sekat_4->getResultArray())){
+                    $query_sekat_4 = json_decode('[{"sekat_4":"0"}]', true);
+                }else{
+                    $query_sekat_4 = $query_sekat_4->getResultArray();
+                }
+                if(empty($query_sekat_5->getResultArray())){
+                    $query_sekat_5 = json_decode('[{"sekat_5":"0"}]', true);
+                }else{
+                    $query_sekat_5 = $query_sekat_5->getResultArray();
+                }
+                if(empty($query_avg->getResultArray())){
+                    $query_avg = json_decode('[{"avg_sekat":"0"}]', true);
+                }else{
+                    $query_avg = $query_avg->getResultArray();
+                }
+                if(empty($query_umur->getResultArray())){
+                    $query_umur = json_decode('[{"umur":"0"}]', true);
+                }else{
+                    $query_umur = $query_umur->getResultArray();
+                }
+        
+                $data = [
+                    floatval($query_sekat_1[0]['sekat_1']),
+                    floatval($query_sekat_2[0]['sekat_2']),
+                    floatval($query_sekat_3[0]['sekat_3']),
+                    floatval($query_sekat_4[0]['sekat_4']),
+                    floatval($query_sekat_5[0]['sekat_5']),
+                    floatval($query_avg[0]['avg_sekat']),
+                    floatval($query_umur[0]['umur']),
+                ];
+                
+        
+                return $data;
+        
+                }
+
+                public function timbangan_harian_b_2() {
+                    $query = $this->db->table('timbangan_harian_b');
+                    $query_umur = $this->db->query('select MAX(umur) as umur FROM timbangan_harian_b where lantai=2');
+                    $query_sekat_1 = $this->db->query('select sekat_1 FROM timbangan_harian_b where umur=(select MAX(umur) from timbangan_harian_b where lantai=2)');
+                    $query_sekat_2 = $this->db->query('select sekat_2 FROM timbangan_harian_b where umur=(select MAX(umur) from timbangan_harian_b where lantai=2)');
+                    $query_sekat_3 = $this->db->query('select sekat_3 FROM timbangan_harian_b where umur=(select MAX(umur) from timbangan_harian_b where lantai=2)');
+                    $query_sekat_4 = $this->db->query('select sekat_4 FROM timbangan_harian_b where umur=(select MAX(umur) from timbangan_harian_b where lantai=2)');
+                    $query_sekat_5 = $this->db->query('select sekat_5 FROM timbangan_harian_b where umur=(select MAX(umur) from timbangan_harian_b where lantai=2)');
+                    $query_avg = $this->db->query('select (sekat_1 + sekat_2 + sekat_3 + sekat_4 + sekat_5) / 5 as avg_sekat FROM timbangan_harian_b where umur=(select MAX(umur) from timbangan_harian_b where lantai=2)');
+            
+                    if(empty($query_sekat_1->getResultArray())){
+                        $query_sekat_1 = json_decode('[{"sekat_1":"0"}]', true);
+                    }else{
+                        $query_sekat_1 = $query_sekat_1->getResultArray();
+                    }
+                    if(empty($query_sekat_2->getResultArray())){
+                        $query_sekat_2 = json_decode('[{"sekat_2":"0"}]', true);
+                    }else{
+                        $query_sekat_2 = $query_sekat_2->getResultArray();
+                    }
+                    if(empty($query_sekat_3->getResultArray())){
+                        $query_sekat_3 = json_decode('[{"sekat_3":"0"}]', true);
+                    }else{
+                        $query_sekat_3 = $query_sekat_3->getResultArray();
+                    }
+                    if(empty($query_sekat_4->getResultArray())){
+                        $query_sekat_4 = json_decode('[{"sekat_4":"0"}]', true);
+                    }else{
+                        $query_sekat_4 = $query_sekat_4->getResultArray();
+                    }
+                    if(empty($query_sekat_5->getResultArray())){
+                        $query_sekat_5 = json_decode('[{"sekat_5":"0"}]', true);
+                    }else{
+                        $query_sekat_5 = $query_sekat_5->getResultArray();
+                    }
+                    if(empty($query_avg->getResultArray())){
+                        $query_avg = json_decode('[{"avg_sekat":"0"}]', true);
+                    }else{
+                        $query_avg = $query_avg->getResultArray();
+                    }
+                    if(empty($query_umur->getResultArray())){
+                        $query_umur = json_decode('[{"umur":"0"}]', true);
+                    }else{
+                        $query_umur = $query_umur->getResultArray();
+                    }
+            
+                    $data = [
+                        floatval($query_sekat_1[0]['sekat_1']),
+                        floatval($query_sekat_2[0]['sekat_2']),
+                        floatval($query_sekat_3[0]['sekat_3']),
+                        floatval($query_sekat_4[0]['sekat_4']),
+                        floatval($query_sekat_5[0]['sekat_5']),
+                        floatval($query_avg[0]['avg_sekat']),
+                        floatval($query_umur[0]['umur']),
+                    ];
+                    
+            
+                    return $data;
+            
+                    }
+        public function kematian_a_1() {
+            $query = $this->db->table('timbangan_harian_a');
+            $query_umur = $this->db->query('select MAX(umur) as umur FROM timbangan_harian_a where lantai=1');
+            $query = $this->db->table('kematian_a');
+            $query_sekat_1 = $this->db->query('select SUM(sekat_1) as sekat_1 FROM kematian_a where lantai=1');
+            $query_sekat_2 = $this->db->query('select SUM(sekat_2) as sekat_2 FROM kematian_a where lantai=1');
+            $query_sekat_3 = $this->db->query('select SUM(sekat_3) as sekat_3 FROM kematian_a where lantai=1');
+            $query_sekat_4 = $this->db->query('select SUM(sekat_4) as sekat_4 FROM kematian_a where lantai=1');
+            $query_sekat_5 = $this->db->query('select SUM(sekat_5) as sekat_5 FROM kematian_a where lantai=1');
+            $query_avg = $this->db->query('select SUM(sekat_1) + SUM(sekat_2) + SUM(sekat_3) + SUM(sekat_4) + SUM(sekat_5) as total FROM kematian_a where lantai=1');
+    
+            if(empty($query_sekat_1->getResultArray())){
+                $query_sekat_1 = json_decode('[{"sekat_1":"0"}]', true);
+            }else{
+                $query_sekat_1 = $query_sekat_1->getResultArray();
+            }
+            if(empty($query_sekat_2->getResultArray())){
+                $query_sekat_2 = json_decode('[{"sekat_2":"0"}]', true);
+            }else{
+                $query_sekat_2 = $query_sekat_2->getResultArray();
+            }
+            if(empty($query_sekat_3->getResultArray())){
+                $query_sekat_3 = json_decode('[{"sekat_3":"0"}]', true);
+            }else{
+                $query_sekat_3 = $query_sekat_3->getResultArray();
+            }
+            if(empty($query_sekat_4->getResultArray())){
+                $query_sekat_4 = json_decode('[{"sekat_4":"0"}]', true);
+            }else{
+                $query_sekat_4 = $query_sekat_4->getResultArray();
+            }
+            if(empty($query_sekat_5->getResultArray())){
+                $query_sekat_5 = json_decode('[{"sekat_5":"0"}]', true);
+            }else{
+                $query_sekat_5 = $query_sekat_5->getResultArray();
+            }
+            if(empty($query_avg->getResultArray())){
+                $query_avg = json_decode('[{"total":"0"}]', true);
+            }else{
+                $query_avg = $query_avg->getResultArray();
+            }
+            if(empty($query_umur->getResultArray())){
+                $query_umur = json_decode('[{"umur":"0"}]', true);
+            }else{
+                $query_umur = $query_umur->getResultArray();
+            }
+    
+            $data = [
+                floatval($query_sekat_1[0]['sekat_1']),
+                floatval($query_sekat_2[0]['sekat_2']),
+                floatval($query_sekat_3[0]['sekat_3']),
+                floatval($query_sekat_4[0]['sekat_4']),
+                floatval($query_sekat_5[0]['sekat_5']),
+                floatval($query_avg[0]['total']),
+                floatval($query_umur[0]['umur']),
+            ];
+            
+    
+            return $data;
+    
+            }
+
+        public function kematian_a_2() {
+            $query = $this->db->table('timbangan_harian_a');
+            $query_umur = $this->db->query('select MAX(umur) as umur FROM timbangan_harian_a where lantai=2');
+            $query = $this->db->table('kematian_a');
+            $query_sekat_1 = $this->db->query('select SUM(sekat_1) as sekat_1 FROM kematian_a where lantai=2');
+            $query_sekat_2 = $this->db->query('select SUM(sekat_2) as sekat_2 FROM kematian_a where lantai=2');
+            $query_sekat_3 = $this->db->query('select SUM(sekat_3) as sekat_3 FROM kematian_a where lantai=2');
+            $query_sekat_4 = $this->db->query('select SUM(sekat_4) as sekat_4 FROM kematian_a where lantai=2');
+            $query_sekat_5 = $this->db->query('select SUM(sekat_5) as sekat_5 FROM kematian_a where lantai=2');
+            $query_avg = $this->db->query('select (SUM(sekat_1) + SUM(sekat_2) + SUM(sekat_3) + SUM(sekat_4) + SUM(sekat_5)) as total FROM kematian_a where lantai=2');
+    
+            if(empty($query_sekat_1->getResultArray())){
+                $query_sekat_1 = json_decode('[{"sekat_1":"0"}]', true);
+            }else{
+                $query_sekat_1 = $query_sekat_1->getResultArray();
+            }
+            if(empty($query_sekat_2->getResultArray())){
+                $query_sekat_2 = json_decode('[{"sekat_2":"0"}]', true);
+            }else{
+                $query_sekat_2 = $query_sekat_2->getResultArray();
+            }
+            if(empty($query_sekat_3->getResultArray())){
+                $query_sekat_3 = json_decode('[{"sekat_3":"0"}]', true);
+            }else{
+                $query_sekat_3 = $query_sekat_3->getResultArray();
+            }
+            if(empty($query_sekat_4->getResultArray())){
+                $query_sekat_4 = json_decode('[{"sekat_4":"0"}]', true);
+            }else{
+                $query_sekat_4 = $query_sekat_4->getResultArray();
+            }
+            if(empty($query_sekat_5->getResultArray())){
+                $query_sekat_5 = json_decode('[{"sekat_5":"0"}]', true);
+            }else{
+                $query_sekat_5 = $query_sekat_5->getResultArray();
+            }
+            if(empty($query_avg->getResultArray())){
+                $query_avg = json_decode('[{"total":"0"}]', true);
+            }else{
+                $query_avg = $query_avg->getResultArray();
+            }
+            if(empty($query_umur->getResultArray())){
+                $query_umur = json_decode('[{"umur":"0"}]', true);
+            }else{
+                $query_umur = $query_umur->getResultArray();
+            }
+    
+            $data = [
+                floatval($query_sekat_1[0]['sekat_1']),
+                floatval($query_sekat_2[0]['sekat_2']),
+                floatval($query_sekat_3[0]['sekat_3']),
+                floatval($query_sekat_4[0]['sekat_4']),
+                floatval($query_sekat_5[0]['sekat_5']),
+                floatval($query_avg[0]['total']),
+                floatval($query_umur[0]['umur']),
+            ];
+            
+    
+            return $data;
+    
+            }
+
+        public function kematian_b_1() {
+            $query = $this->db->table('timbangan_harian_b');
+            $query_umur = $this->db->query('select MAX(umur) as umur FROM timbangan_harian_b where lantai=1');
+            $query = $this->db->table('kematian_b');
+            $query_sekat_1 = $this->db->query('select SUM(sekat_1) as sekat_1 FROM kematian_b where lantai=1');
+            $query_sekat_2 = $this->db->query('select SUM(sekat_2) as sekat_2 FROM kematian_b where lantai=1');
+            $query_sekat_3 = $this->db->query('select SUM(sekat_3) as sekat_3 FROM kematian_b where lantai=1');
+            $query_sekat_4 = $this->db->query('select SUM(sekat_4) as sekat_4 FROM kematian_b where lantai=1');
+            $query_sekat_5 = $this->db->query('select SUM(sekat_5) as sekat_5 FROM kematian_b where lantai=1');
+            $query_avg = $this->db->query('select SUM(sekat_1) + SUM(sekat_2) + SUM(sekat_3) + SUM(sekat_4) + SUM(sekat_5) as total FROM kematian_b where lantai=1');
+    
+            if(empty($query_sekat_1->getResultArray())){
+                $query_sekat_1 = json_decode('[{"sekat_1":"0"}]', true);
+            }else{
+                $query_sekat_1 = $query_sekat_1->getResultArray();
+            }
+            if(empty($query_sekat_2->getResultArray())){
+                $query_sekat_2 = json_decode('[{"sekat_2":"0"}]', true);
+            }else{
+                $query_sekat_2 = $query_sekat_2->getResultArray();
+            }
+            if(empty($query_sekat_3->getResultArray())){
+                $query_sekat_3 = json_decode('[{"sekat_3":"0"}]', true);
+            }else{
+                $query_sekat_3 = $query_sekat_3->getResultArray();
+            }
+            if(empty($query_sekat_4->getResultArray())){
+                $query_sekat_4 = json_decode('[{"sekat_4":"0"}]', true);
+            }else{
+                $query_sekat_4 = $query_sekat_4->getResultArray();
+            }
+            if(empty($query_sekat_5->getResultArray())){
+                $query_sekat_5 = json_decode('[{"sekat_5":"0"}]', true);
+            }else{
+                $query_sekat_5 = $query_sekat_5->getResultArray();
+            }
+            if(empty($query_avg->getResultArray())){
+                $query_avg = json_decode('[{"total":"0"}]', true);
+            }else{
+                $query_avg = $query_avg->getResultArray();
+            }
+            if(empty($query_umur->getResultArray())){
+                $query_umur = json_decode('[{"umur":"0"}]', true);
+            }else{
+                $query_umur = $query_umur->getResultArray();
+            }
+    
+            $data = [
+                floatval($query_sekat_1[0]['sekat_1']),
+                floatval($query_sekat_2[0]['sekat_2']),
+                floatval($query_sekat_3[0]['sekat_3']),
+                floatval($query_sekat_4[0]['sekat_4']),
+                floatval($query_sekat_5[0]['sekat_5']),
+                floatval($query_avg[0]['total']),
+                floatval($query_umur[0]['umur']),
+            ];
+            
+    
+            return $data;
+    
+            }
+
+    public function kematian_b_2() {
+        $query = $this->db->table('timbangan_harian_b');
+        $query_umur = $this->db->query('select MAX(umur) as umur FROM timbangan_harian_b where lantai=2');
+        $query = $this->db->table('kematian_b');
+        $query_sekat_1 = $this->db->query('select SUM(sekat_1) as sekat_1 FROM kematian_b where lantai=2');
+        $query_sekat_2 = $this->db->query('select SUM(sekat_2) as sekat_2 FROM kematian_b where lantai=2');
+        $query_sekat_3 = $this->db->query('select SUM(sekat_3) as sekat_3 FROM kematian_b where lantai=2');
+        $query_sekat_4 = $this->db->query('select SUM(sekat_4) as sekat_4 FROM kematian_b where lantai=2');
+        $query_sekat_5 = $this->db->query('select SUM(sekat_5) as sekat_5 FROM kematian_b where lantai=2');
+        $query_avg = $this->db->query('select (SUM(sekat_1) + SUM(sekat_2) + SUM(sekat_3) + SUM(sekat_4) + SUM(sekat_5)) as total FROM kematian_b where lantai=2');
+
+        if(empty($query_sekat_1->getResultArray())){
+            $query_sekat_1 = json_decode('[{"sekat_1":"0"}]', true);
+        }else{
+            $query_sekat_1 = $query_sekat_1->getResultArray();
+        }
+        if(empty($query_sekat_2->getResultArray())){
+            $query_sekat_2 = json_decode('[{"sekat_2":"0"}]', true);
+        }else{
+            $query_sekat_2 = $query_sekat_2->getResultArray();
+        }
+        if(empty($query_sekat_3->getResultArray())){
+            $query_sekat_3 = json_decode('[{"sekat_3":"0"}]', true);
+        }else{
+            $query_sekat_3 = $query_sekat_3->getResultArray();
+        }
+        if(empty($query_sekat_4->getResultArray())){
+            $query_sekat_4 = json_decode('[{"sekat_4":"0"}]', true);
+        }else{
+            $query_sekat_4 = $query_sekat_4->getResultArray();
+        }
+        if(empty($query_sekat_5->getResultArray())){
+            $query_sekat_5 = json_decode('[{"sekat_5":"0"}]', true);
+        }else{
+            $query_sekat_5 = $query_sekat_5->getResultArray();
+        }
+        if(empty($query_avg->getResultArray())){
+            $query_avg = json_decode('[{"total":"0"}]', true);
+        }else{
+            $query_avg = $query_avg->getResultArray();
+        }
+        if(empty($query_umur->getResultArray())){
+            $query_umur = json_decode('[{"umur":"0"}]', true);
+        }else{
+            $query_umur = $query_umur->getResultArray();
+        }
+
+        $data = [
+            floatval($query_sekat_1[0]['sekat_1']),
+            floatval($query_sekat_2[0]['sekat_2']),
+            floatval($query_sekat_3[0]['sekat_3']),
+            floatval($query_sekat_4[0]['sekat_4']),
+            floatval($query_sekat_5[0]['sekat_5']),
+            floatval($query_avg[0]['total']),
+            floatval($query_umur[0]['umur']),
+        ];
+        
 
         return $data;
 
@@ -331,5 +813,4 @@ class DashboardModel extends Model {
                                 return $parse_data_array_y;
                         
                                 }
- 
 }
