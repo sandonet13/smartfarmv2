@@ -30,7 +30,7 @@ class Home extends BaseController
 		
 		$data = [
 			'title_meta' => view('partials/title-meta', ['title' => 'Dashboard']),
-			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'Minia', 'li_2' => 'Dashboard']),
+			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'SmartFarm', 'li_2' => 'Dashboard']),
 			'hasil_panen_a' => $this->dashboardModel->get_hasil_panen_a(),
 			'panen_akhir_a' => $this->dashboardModel->get_panen_seminggu(),
 			'panen_hari_a' => $this->dashboardModel->get_panen_day(),
@@ -254,7 +254,7 @@ class Home extends BaseController
 		
 		$data = [
 			'title_meta' => view('partials/title-meta', ['title' => 'Dashboard']),
-			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'Minia', 'li_2' => 'Dashboard'])
+			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'SmartFarm', 'li_2' => 'Dashboard'])
 		];
 		
 		return view('index-dark', $data);
@@ -265,7 +265,7 @@ class Home extends BaseController
 		
 		$data = [
 			'title_meta' => view('partials/title-meta', ['title' => 'Dashboard']),
-			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'Minia', 'li_2' => 'Dashboard'])
+			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'SmartFarm', 'li_2' => 'Dashboard'])
 		];
 		
 		return view('index-rtl', $data);
@@ -276,7 +276,7 @@ class Home extends BaseController
 		
 		$data = [
 			'title_meta' => view('partials/title-meta', ['title' => 'Dashboard']),
-			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'Minia', 'li_2' => 'Dashboard'])
+			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'SmartFarm', 'li_2' => 'Dashboard'])
 		];
 		
 		return view('layouts-colored-sidebar', $data);
@@ -287,18 +287,18 @@ class Home extends BaseController
 		
 		$data = [
 			'title_meta' => view('partials/title-meta', ['title' => 'Dashboard']),
-			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'Minia', 'li_2' => 'Dashboard'])
+			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'SmartFarm', 'li_2' => 'Dashboard'])
 		];
 		
 		return view('layouts-boxed', $data);
 	}
-
+ 
 	public function show_compact_sidebar()
 	{
 		
 		$data = [
 			'title_meta' => view('partials/title-meta', ['title' => 'Dashboard']),
-			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'Minia', 'li_2' => 'Dashboard'])
+			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'SmartFarm', 'li_2' => 'Dashboard'])
 		];
 		
 		return view('layouts-compact-sidebar', $data);
@@ -309,7 +309,7 @@ class Home extends BaseController
 		
 		$data = [
 			'title_meta' => view('partials/title-meta', ['title' => 'Dashboard']),
-			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'Minia', 'li_2' => 'Dashboard'])
+			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'SmartFarm', 'li_2' => 'Dashboard'])
 		];
 		
 		return view('layouts-dark-sidebar', $data);
@@ -320,7 +320,7 @@ class Home extends BaseController
 		
 		$data = [
 			'title_meta' => view('partials/title-meta', ['title' => 'Dashboard']),
-			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'Minia', 'li_2' => 'Dashboard'])
+			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'SmartFarm', 'li_2' => 'Dashboard'])
 		];
 		
 		return view('layouts-icon-sidebar', $data);
@@ -331,7 +331,7 @@ class Home extends BaseController
 		
 		$data = [
 			'title_meta' => view('partials/title-meta', ['title' => 'Dashboard']),
-			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'Minia', 'li_2' => 'Dashboard'])
+			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'SmartFarm', 'li_2' => 'Dashboard'])
 		];
 		
 		return view('layouts-scrollable', $data);

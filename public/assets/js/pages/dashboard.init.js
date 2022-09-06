@@ -22,7 +22,7 @@ function getChartColorsArray(chartId) {
 }
 
 //  MINI CHART 1
-var url = 'http://localhost:8080/get_panen_day';
+var url = '/get_panen_day';
 var data_fix = [];
 $.ajax({
     url: url,
@@ -79,7 +79,7 @@ var chart = new ApexCharts(document.querySelector("#mini-chart1"), options);
 chart.render();
 
 //  MINI CHART 2
-var url = 'http://localhost:8080/get_panen_day_b';
+var url = '/get_panen_day_b';
 var data_fix = [];
 $.ajax({
     url: url,

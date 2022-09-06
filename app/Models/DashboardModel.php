@@ -214,6 +214,8 @@ class DashboardModel extends Model {
         $query_sekat_4 = $this->db->query('select sekat_4 FROM timbangan_harian_a where umur=(select MAX(umur) from timbangan_harian_a where lantai=1)');
         $query_sekat_5 = $this->db->query('select sekat_5 FROM timbangan_harian_a where umur=(select MAX(umur) from timbangan_harian_a where lantai=1)');
         $query_avg = $this->db->query('select (sekat_1 + sekat_2 + sekat_3 + sekat_4 + sekat_5) / 5 as avg_sekat FROM timbangan_harian_a where umur=(select MAX(umur) from timbangan_harian_a where lantai=1)');
+        $query_pakai = $this->db->query('select SUM(pakai) as pakai FROM timbangan_harian_a where lantai=1');
+        $query_sisa = $this->db->query('select SUM(sisa) as sisa FROM timbangan_harian_a where lantai=1');
 
 
         if(empty($query_sekat_1->getResultArray())){
@@ -251,6 +253,16 @@ class DashboardModel extends Model {
         }else{
             $query_umur = $query_umur->getResultArray();
         }
+        if(empty($query_pakai->getResultArray())){
+            $query_pakai = json_decode('[{"pakai":"0"}]', true);
+        }else{
+            $query_pakai = $query_pakai->getResultArray();
+        }
+        if(empty($query_sisa->getResultArray())){
+            $query_sisa = json_decode('[{"sisa":"0"}]', true);
+        }else{
+            $query_sisa = $query_sisa->getResultArray();
+        }
 
         $data = [
             floatval($query_sekat_1[0]['sekat_1']),
@@ -260,6 +272,8 @@ class DashboardModel extends Model {
 			floatval($query_sekat_5[0]['sekat_5']),
 			floatval($query_avg[0]['avg_sekat']),
 			floatval($query_umur[0]['umur']),
+            floatval($query_pakai[0]['pakai']),
+            floatval($query_sisa[0]['sisa']),
 		];
 		
 
@@ -277,7 +291,10 @@ class DashboardModel extends Model {
             $query_sekat_4 = $this->db->query('select sekat_4 FROM timbangan_harian_a where umur=(select MAX(umur) from timbangan_harian_a where lantai=2)');
             $query_sekat_5 = $this->db->query('select sekat_5 FROM timbangan_harian_a where umur=(select MAX(umur) from timbangan_harian_a where lantai=2)');
             $query_avg = $this->db->query('select (sekat_1 + sekat_2 + sekat_3 + sekat_4 + sekat_5) / 5 as avg_sekat FROM timbangan_harian_a where umur=(select MAX(umur) from timbangan_harian_a where lantai=2)');
-    
+            $query_pakai = $this->db->query('select SUM(pakai) as pakai FROM timbangan_harian_a where lantai=2');
+            $query_sisa = $this->db->query('select SUM(sisa) as sisa FROM timbangan_harian_a where lantai=2');
+
+
             if(empty($query_sekat_1->getResultArray())){
                 $query_sekat_1 = json_decode('[{"sekat_1":"0"}]', true);
             }else{
@@ -313,6 +330,16 @@ class DashboardModel extends Model {
             }else{
                 $query_umur = $query_umur->getResultArray();
             }
+            if(empty($query_pakai->getResultArray())){
+                $query_pakai = json_decode('[{"pakai":"0"}]', true);
+            }else{
+                $query_pakai = $query_pakai->getResultArray();
+            }
+            if(empty($query_sisa->getResultArray())){
+                $query_sisa = json_decode('[{"sisa":"0"}]', true);
+            }else{
+                $query_sisa = $query_sisa->getResultArray();
+            }
     
             $data = [
                 floatval($query_sekat_1[0]['sekat_1']),
@@ -322,6 +349,9 @@ class DashboardModel extends Model {
                 floatval($query_sekat_5[0]['sekat_5']),
                 floatval($query_avg[0]['avg_sekat']),
                 floatval($query_umur[0]['umur']),
+                floatval($query_pakai[0]['pakai']),
+                floatval($query_sisa[0]['sisa']),
+
             ];
             
     
@@ -338,7 +368,10 @@ class DashboardModel extends Model {
                 $query_sekat_4 = $this->db->query('select sekat_4 FROM timbangan_harian_b where umur=(select MAX(umur) from timbangan_harian_b where lantai=1)');
                 $query_sekat_5 = $this->db->query('select sekat_5 FROM timbangan_harian_b where umur=(select MAX(umur) from timbangan_harian_b where lantai=1)');
                 $query_avg = $this->db->query('select (sekat_1 + sekat_2 + sekat_3 + sekat_4 + sekat_5) / 5 as avg_sekat FROM timbangan_harian_b where umur=(select MAX(umur) from timbangan_harian_b where lantai=1)');
-        
+                $query_pakai = $this->db->query('select SUM(pakai) as pakai FROM timbangan_harian_b where lantai=1');
+                $query_sisa = $this->db->query('select SUM(sisa) as sisa FROM timbangan_harian_b where lantai=1');
+
+
                 if(empty($query_sekat_1->getResultArray())){
                     $query_sekat_1 = json_decode('[{"sekat_1":"0"}]', true);
                 }else{
@@ -374,6 +407,16 @@ class DashboardModel extends Model {
                 }else{
                     $query_umur = $query_umur->getResultArray();
                 }
+                if(empty($query_pakai->getResultArray())){
+                    $query_pakai = json_decode('[{"pakai":"0"}]', true);
+                }else{
+                    $query_pakai = $query_pakai->getResultArray();
+                }
+                if(empty($query_sisa->getResultArray())){
+                    $query_sisa = json_decode('[{"sisa":"0"}]', true);
+                }else{
+                    $query_sisa = $query_sisa->getResultArray();
+                }
         
                 $data = [
                     floatval($query_sekat_1[0]['sekat_1']),
@@ -383,6 +426,8 @@ class DashboardModel extends Model {
                     floatval($query_sekat_5[0]['sekat_5']),
                     floatval($query_avg[0]['avg_sekat']),
                     floatval($query_umur[0]['umur']),
+                    floatval($query_pakai[0]['pakai']),
+                    floatval($query_sisa[0]['sisa']),
                 ];
                 
         
@@ -399,7 +444,10 @@ class DashboardModel extends Model {
                     $query_sekat_4 = $this->db->query('select sekat_4 FROM timbangan_harian_b where umur=(select MAX(umur) from timbangan_harian_b where lantai=2)');
                     $query_sekat_5 = $this->db->query('select sekat_5 FROM timbangan_harian_b where umur=(select MAX(umur) from timbangan_harian_b where lantai=2)');
                     $query_avg = $this->db->query('select (sekat_1 + sekat_2 + sekat_3 + sekat_4 + sekat_5) / 5 as avg_sekat FROM timbangan_harian_b where umur=(select MAX(umur) from timbangan_harian_b where lantai=2)');
-            
+                    $query_pakai = $this->db->query('select SUM(pakai) as pakai FROM timbangan_harian_b where lantai=2');
+                    $query_sisa = $this->db->query('select SUM(sisa) as sisa FROM timbangan_harian_b where lantai=2');
+
+
                     if(empty($query_sekat_1->getResultArray())){
                         $query_sekat_1 = json_decode('[{"sekat_1":"0"}]', true);
                     }else{
@@ -435,6 +483,16 @@ class DashboardModel extends Model {
                     }else{
                         $query_umur = $query_umur->getResultArray();
                     }
+                    if(empty($query_pakai->getResultArray())){
+                        $query_pakai = json_decode('[{"pakai":"0"}]', true);
+                    }else{
+                        $query_pakai = $query_pakai->getResultArray();
+                    }
+                    if(empty($query_sisa->getResultArray())){
+                        $query_sisa = json_decode('[{"sisa":"0"}]', true);
+                    }else{
+                        $query_sisa = $query_sisa->getResultArray();
+                    }
             
                     $data = [
                         floatval($query_sekat_1[0]['sekat_1']),
@@ -444,6 +502,8 @@ class DashboardModel extends Model {
                         floatval($query_sekat_5[0]['sekat_5']),
                         floatval($query_avg[0]['avg_sekat']),
                         floatval($query_umur[0]['umur']),
+                        floatval($query_pakai[0]['pakai']),
+                        floatval($query_sisa[0]['sisa']),
                     ];
                     
             

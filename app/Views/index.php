@@ -27,6 +27,57 @@
                 <?= $page_title ?>
 
                 <div class="row">
+                <div class="col-xl-4 col-md-4">
+                        <!-- card -->
+                        <div class="card card-h-100">
+                            <!-- card body -->
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-6">
+                                        <h5 class="text-muted mb-3 lh-1 d-block text-truncate">Total Panen</h5>
+                                        <h4 class="mb-3">
+                                            <span class="counter-value" data-target="<?php echo $hasil_panen_a + $hasil_panen_b?>"></span>&nbsp;Ekor
+                                        </h4>
+                                    </div>
+                                </div>
+                                
+                            </div><!-- end card body -->
+                        </div><!-- end card -->
+                    </div><!-- end col -->
+                    <div class="col-xl-4 col-md-4">
+                        <!-- card -->
+                        <div class="card card-h-100">
+                            <!-- card body -->
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-6">
+                                        <h5 class="text-muted mb-3 lh-1 d-block text-truncate">Total Berat</h5>
+                                        <h4 class="mb-3">
+                                            <span class="counter-value" data-target="<?php echo round($berat_total_a + $berat_total_b,2)?>"></span>&nbsp;Kg
+                                        </h4>
+                                    </div>
+                                </div>
+                        
+                            </div><!-- end card body -->
+                        </div><!-- end card -->
+                    </div><!-- end col -->
+                    <div class="col-xl-4 col-md-4">
+                        <!-- card -->
+                        <div class="card card-h-100">
+                            <!-- card body -->
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-6">
+                                        <h5 class="text-muted mb-3 lh-1 d-block text-truncate">Berat Rata</h5>
+                                        <h4 class="mb-3">
+                                            <span class="counter-value" data-target="<?php if($hasil_panen_a > 0 && $hasil_panen_b > 0 && $berat_total_a > 0 && $berat_total_b > 0) {echo round(($hasil_panen_a + $hasil_panen_b) / ($berat_total_a + $berat_total_b),2);}?>"></span>&nbsp;Kg
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div><!-- end card body -->
+                        </div><!-- end card -->
+                    </div><!-- end col -->
+
                     <div class="col-xl-6 col-md-6">
                         <!-- card -->
                         <div class="card card-h-100">
@@ -36,7 +87,7 @@
                                     <div class="col-6">
                                         <span class="text-muted mb-3 lh-1 d-block text-truncate">Total Panen Kandang A</span>
                                         <h4 class="mb-3">
-                                            <span class="counter-value" data-target="<?php echo $hasil_panen_a?>">0&nbsp;</span>&nbsp;Ekor
+                                            <span class="counter-value" data-target="<?php echo $hasil_panen_a?>"></span>&nbsp;Ekor
                                         </h4>
                                     </div>
 
@@ -46,15 +97,15 @@
                                 </div>
                                 
                                 <div class="text-nowrap">
-                                    <span class="badge bg-soft-success text-success"><?php echo $berat_total_a?>0&nbsp;</span>&nbsp;Kg
-                                    <span class="ms-1 text-muted font-size-13">Berat Total</span>
+                                    <span class="badge bg-soft-success text-success"><?php echo round($berat_total_a,2)?></span>
+                                    <span class="ms-1 text-muted font-size-13">Kg Berat Total</span>
                                 </div>
                                 <div class="text-nowrap">
-                                    <span class="badge bg-soft-success text-success"><?php echo round($berat_rata,2)?></span>&nbsp;Kg
-                                    <span class="ms-1 text-muted font-size-13">Berat Rata - Rata</span>
+                                    <span class="badge bg-soft-success text-success"><?php echo round($berat_rata,2)?></span>
+                                    <span class="ms-1 text-muted font-size-13">Kg Berat Rata - Rata</span>
                                 </div>
                                 <div class="text-nowrap">
-                                    <span class="badge bg-soft-success text-success"><?php echo $panen_akhir_a?>0&nbsp;</span>
+                                    <span class="badge bg-soft-success text-success"><?php echo round($panen_akhir_a,2)?></span>
                                     <span class="ms-1 text-muted font-size-13">Ekor Seminggu Terakhir</span>
                                 </div>
                                 <!-- </div> -->
@@ -81,15 +132,15 @@
                                 </div>
                                
                                 <div class="text-nowrap">
-                                    <span class="badge bg-soft-success text-success"><?php echo $berat_total_b?>0&nbsp;</span>&nbsp;Kg
-                                    <span class="ms-1 text-muted font-size-13">Berat Total</span>
+                                    <span class="badge bg-soft-success text-success"><?php echo round($berat_total_b,2)?></span>
+                                    <span class="ms-1 text-muted font-size-13">Kg Berat Total</span>
                                 </div>
                                 <div class="text-nowrap">
-                                    <span class="badge bg-soft-success text-success"><?php echo round($berat_rata_b,2)?></span>&nbsp;Kg
-                                    <span class="ms-1 text-muted font-size-13">Berat Rata - Rata</span>
+                                    <span class="badge bg-soft-success text-success"><?php echo round($berat_rata_b,2)?></span>
+                                    <span class="ms-1 text-muted font-size-13">Kg Berat Rata - Rata</span>
                                 </div>
                                 <div class="text-nowrap">
-                                    <span class="badge bg-soft-success text-success"><?php echo $panen_akhir_b?>0&nbsp;</span>
+                                    <span class="badge bg-soft-success text-success"><?php echo round($panen_akhir_b,2)?></span>
                                     <span class="ms-1 text-muted font-size-13">Ekor Seminggu Terakhir</span>
                                 </div>
                             </div><!-- end card body -->
@@ -172,6 +223,20 @@
                                                 <td><?php echo $timbangan_harian_b_1[5]?></td>
                                                 <td><?php echo $timbangan_harian_b_2[5]?></td>
                                             </tr>
+                                            <!-- <tr>
+                                                <th>Pakan (bag)</th>
+                                                <td><?php echo $timbangan_harian_a_1[7]?></td>
+                                                <td><?php echo $timbangan_harian_a_2[7]?></td>
+                                                <td><?php echo $timbangan_harian_b_1[7]?></td>
+                                                <td><?php echo $timbangan_harian_b_2[7]?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Stock (bag)</th>
+                                                <td><?php echo $timbangan_harian_a_1[8]?></td>
+                                                <td><?php echo $timbangan_harian_a_2[8]?></td>
+                                                <td><?php echo $timbangan_harian_b_1[8]?></td>
+                                                <td><?php echo $timbangan_harian_b_2[8]?></td>
+                                            </tr> -->
                                         </tbody>
                                     </table>
                                 </div>
@@ -262,7 +327,7 @@
                             </div><!-- end card body -->
                         </div><!-- end card -->
                 </div><!-- end row-->
-
+</div>
                 <div class="row">
                     <div class="col-xl-6">
                         <div class="card">
